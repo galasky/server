@@ -151,7 +151,7 @@ Client::connect(const std::string &login, const std::string &password)
     return emmet("KO\tYou are already connected\n");
   User *user = DataBase::instance().getUser(login, password);
   if (user == NULL)
-    return emmet("KO\tBad login or bad password " + login + " " + password + "\n");
+    return emmet("KO\tBad login or bad password\n");
   setUser(user);
   _user->setClient(this);
   _user->setRefreshFriends(true);
