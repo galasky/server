@@ -184,10 +184,13 @@ Client::getFriends()
   if (_game != NULL)
     return emmet("KO\tGET FRIENDS You are playing\n");
 
+  std::cout << "DEBUG A\n";
   std::list<User *> list =  _user->getFriends();
+  std::cout << "DEBUG B\n";
   std::string str = "Friends :";
   for (std::list<User *>::iterator it = list.begin(); it != list.end(); it++)
     {
+      std::cout << "DEBUG C\n";
       str += "\t" + (*it)->getPseudo() + "\t" + ((*it)->getConnected()  && ((*it)->getClient() == NULL || (*it)->getClient()->_game == NULL) && (*it)->getWaiting() == false ? "OK" : "KO") + "\t" + ((*it)->getClient()->_game == NULL ? "OK" : "KO");
     }
   str += "\n";
