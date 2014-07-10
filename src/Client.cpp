@@ -279,33 +279,7 @@ Client::refresh()
     return emmet("KO\tPlease login\n");
   if (_game != NULL)
     return emmet("KO\tREFRESH You are playing\n");
-
-  if (_user->refreshFriends())
-    {
-      _user->setRefreshFriends(false);
-      return getFriends();
-    }
-  if (_user->getWaiting())
-    {
-      if (_opponent && _opponent->isReady() && _opponent->getOpponent() == this)
-	{
-	  _user->setWaiting(false);
-	  _ready = true;
-	}
-    }
-  if (_user->getWaiting() == false && _opponent != NULL)
-    {
-      if (_ready == false && _opponent->getUser()->getWaiting())
-	return emmet("DEFIED BY\t" + _opponent->getUser()->getPseudo() + "\n");    
-      if (_ready == true && _opponent->isReady())
-	{
-	  _game = new Game(this, _opponent);
-	  _opponent->setGame(_game);
-	  _opponent->emmet("BEGIN\tP2\n");
-	  return emmet("BEGIN\tP1\n");
-	}
-    }
-  return emmet("NOTHING\n");
+  return getFriends();
 }
 
 bool
