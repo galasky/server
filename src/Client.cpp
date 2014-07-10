@@ -188,7 +188,7 @@ Client::getFriends()
   std::string str = "Friends :";
   for (std::list<User *>::iterator it = list.begin(); it != list.end(); it++)
     {
-      str += "\t" + (*it)->getPseudo() + "\t" + ((*it)->getConnected() ? "OK" : "KO") + "\t" + ((*it)->getPseudo() == _user->getOpponent() ? "OK" : "KO");
+      str += "\t" + (*it)->getPseudo() + "\t" + ((*it)->getConnected()  && (*it)->getClient()->_game == NULL ? "OK" : "KO") + "\t" + ((*it)->getClient()->_game == NULL ? "OK" : "KO");
     }
   str += "\n";
   return emmet(str);
