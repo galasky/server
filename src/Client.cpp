@@ -217,7 +217,7 @@ Client::defy(const std::string &login)
 	    return emmet("DEFY\tKO\t" + login + " is playing\n");
 	  _user->setWaiting(true);
 	  user->getClient()->defiedBy(this);
-	  return emmet("DEFY\tOK\tFind\n");
+	  return emmet("DEFY\tOK\t" + login + "\tFind\n");
 	}
       else
 	return emmet("DEFY\tKO\t" + login + " is not joinable\n");
@@ -235,6 +235,8 @@ Client::defiedBy(Client *opponent)
 void
 Client::ok()
 {
+  if (_game != NULL)
+    return emmet("DEFY\tKO\tDEFY You are playing\n");
   if (_user->getWaiting() == false && _opponent != NULL)
     {
       _ready = true;
@@ -250,6 +252,8 @@ Client::ok()
 void
 Client::ko()
 {
+  if (_game != NULL)
+    return emmet("DEFY\tKO\tDEFY You are playing\n");
   if (_user->getWaiting() == false)
     {
       if (_opponent && _opponent->getOpponent() == this)
