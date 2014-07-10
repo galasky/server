@@ -213,6 +213,8 @@ Client::defy(const std::string &login)
 	  if (user->getClient() == NULL)
 	    return emmet("DEFY\tKO\tCLIENT EST NULL CONNARD\n");
 	  _opponent = user->getClient();
+	  if (_opponent->_game != NULL)
+	    return emmet("DEFY\tKO\t" + login + " is playing\n");
 	  _user->setWaiting(true);
 	  user->getClient()->defiedBy(this);
 	  return emmet("DEFY\tOK\tFind\n");
