@@ -157,7 +157,7 @@ Client::getInfo()
 {
   if (_user == NULL)
     return emmet("KO\tPlease login\n");
-  emmet("SCORE\t" + convertInt(_user->getScore()));
+  emmet("SCORE\t" + convertInt(_user->getScore()) + "\n");
 }
 
 void
