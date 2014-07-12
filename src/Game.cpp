@@ -61,8 +61,8 @@ Game::play(Client *client, unsigned int nb)
 	    {	
 	      client->getOpponent()->getUser()->win(client->getUser()->getScore());
 	      client->getUser()->lose();
-	      client->emmet("YOU LOSE\n");
-	      client->getOpponent()->emmet("YOU WIN\n");
+	      client->emmet("YOU LOSE");
+	      client->getOpponent()->emmet("YOU WIN");
 	    }
 	  else
 	    {

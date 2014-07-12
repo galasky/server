@@ -52,6 +52,7 @@ public:
   void		play(unsigned int);
   void		win();
   int		getWin() const;
+  void		getInfo();
   bool		winer();
 private:
   Parser	_parser;

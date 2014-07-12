@@ -145,6 +145,14 @@ Client::add(const std::string &login)
 }
 
 void
+Client::getInfo()
+{
+  if (_user == NULL)
+    return emmet("KO\tPlease login\n");
+  emmet("SCORE\t" + _user->getScore());
+}
+
+void
 Client::connect(const std::string &login, const std::string &password)
 {
   if (_user != NULL)
@@ -157,6 +165,7 @@ Client::connect(const std::string &login, const std::string &password)
   _user->setRefreshFriends(true);
   _user->setConnected(true);
   emmet("OK\tConnect success\n");
+  getInfo();
   getFriends();
 }
 void
@@ -171,6 +180,7 @@ Client::create(const std::string &login, const std::string &password)
       _user->setConnected(true);
       _user->setRefreshFriends(true);
       emmet("OK\tCreate success\n");
+      getInfo();
       return getFriends();
     }
   return emmet("KO\tLogin already used\n");
@@ -191,7 +201,7 @@ Client::getFriends()
       str += "\t" + (*it)->getPseudo() + "\t";
       str += ((*it)->getConnected()  && ((*it)->getClient() == NULL || (*it)->getClient()->_game == NULL) && (*it)->getWaiting() == false ? "OK" : "KO");
       str += "\t";
-      str += "O\n";
+      str += (*it)->getScore();
     }
   str += "\n";
   return emmet(str);
