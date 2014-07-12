@@ -57,10 +57,20 @@ Game::play(Client *client, unsigned int nb)
 	  str += sNB;
 	  str += "\n";
 	  client->getOpponent()->win();
-	  _current = _p1;
-	  client->getOpponent()->emmet(str);
-	  _nbC = 0;
-	  _queue.clear();
+	  if (client->getOpponent()->getWin() > client->getWin() + 1 || client->getOpponent()->getWin() >= 3)
+	    {	
+	      client->getOpponent()->getUser()->win(client->getUser()->getScore());
+	      client->getUser()->lose();
+	      client->emmet("YOU LOSE\n");
+	      client->getOpponent()->emmet("YOU WIN\n");
+	    }
+	  else
+	    {
+	      _current = _p1;
+	      client->getOpponent()->emmet(str);
+	      _nbC = 0;
+	      _queue.clear();
+	    }
 	}
     }
 }

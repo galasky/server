@@ -26,6 +26,9 @@ public:
   bool				getWaiting() const;
   void				setRefreshFriends(bool);
   bool				refreshFriends() const;
+  void				win(unsigned int);
+  void				lose();
+  unsigned int			getScore() const;
 private:
   Client			*_client;
   std::string			_pseudo;
@@ -35,6 +38,7 @@ private:
   bool				_waiting;
   bool				_refreshFriends;
   std::string			_opponent;
+  unsigned int			_score;
 };
 
 #endif

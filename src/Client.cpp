@@ -320,3 +320,9 @@ Client::winer()
     return true;
   return false;
 }
+
+int
+Client::getWin() const
+{
+  return _win;
+}

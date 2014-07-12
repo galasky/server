@@ -5,6 +5,7 @@ User::User(const std::string &pseudo, const std::string &password) :
   _pseudo(pseudo),
   _password(password)
 {
+  _score = 0;
   _connected = false;
   _waiting = false;
   _opponent = "";
@@ -107,4 +108,25 @@ bool
 User::refreshFriends() const
 {
   return _refreshFriends;
+}
+
+void
+User::win(unsigned int scoreOpponent)
+{
+  if (scoreOpponent <= 100)
+    _score += 100;
+  else
+    _score += scoreOpponent / 2;
+}
+
+void
+User::lose()
+{
+  _score /= 2;
+}
+
+unsigned int
+User::getScore() const
+{
+  return _score;
 }

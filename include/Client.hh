@@ -51,6 +51,7 @@ public:
   void		setGame(Game *);
   void		play(unsigned int);
   void		win();
+  int		getWin() const;
   bool		winer();
 private:
   Parser	_parser;
