@@ -1,3 +1,4 @@
+#include <sstream>      
 #include <iostream>
 #include "Client.hh"
 #include "DataBase.hh"
@@ -144,12 +145,19 @@ Client::add(const std::string &login)
   return emmet("ADD\tKO\tNo found " + login + "\n");
 }
 
+std::string convertInt(int number)
+{
+  std::stringstream ss;
+  ss << number;
+  return ss.str();
+}
+
 void
 Client::getInfo()
 {
   if (_user == NULL)
     return emmet("KO\tPlease login\n");
-  emmet("SCORE\t" + _user->getScore());
+  emmet("SCORE\t" + convertInt(_user->getScore()));
 }
 
 void
