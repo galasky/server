@@ -36,6 +36,7 @@ Game::play(Client *client, unsigned int nb)
       str = "YOUR TURN\t";
       str += sNB;
       str += "\n";
+      client->emmet("HIS TURN\n");
       client->getOpponent()->emmet(str);
     }
   else
