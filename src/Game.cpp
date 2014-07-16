@@ -57,8 +57,8 @@ Game::play(Client *client, unsigned int nb)
 	  str += sNB;
 	  str += "\n";
 	  client->getOpponent()->win();
-	  if (client->getOpponent()->getWin() > client->getWin() + 1 || client->getOpponent()->getWin() >= 3)
-	    {	
+	  if (client->getOpponent()->getWin() > client->getWin() + 1 || (client->getOpponent()->getWin() >= 2 && client->getOpponent()->getWin() > client->getWin()))
+	    {
 	      client->getOpponent()->getUser()->win(client->getUser()->getScore());
 	      client->getUser()->lose();
 	      client->emmet("YOU LOSE");
